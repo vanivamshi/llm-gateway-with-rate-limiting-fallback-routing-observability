@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A focused control room for LLM gateway traffic, resilience, and observability." />
+    <title>Relay Control | LLM Gateway</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#overview" aria-label="Relay Control home">
+          <span class="brand-mark"><span></span><span></span><span></span></span>
+          <span>relay<span class="brand-dot">.</span></span>
+        </a>
+
+        <div class="workspace-select">
+          <span class="workspace-icon">RC</span>
+          <span><strong>Production</strong><small>relay-workspace</small></span>
+          <span class="chevron">⌄</span>
+        </div>
+
+        <nav class="nav" aria-label="Main navigation">
+          <p class="nav-label">Control room</p>
+          <a class="nav-item active" href="#overview"><span class="nav-icon">◈</span>Overview</a>
+          <a class="nav-item" href="#providers"><span class="nav-icon">◉</span>Providers <b class="nav-count">3</b></a>
+          <a class="nav-item" href="#limits"><span class="nav-icon">◌</span>Rate limits</a>
+          <a class="nav-item" href="#routes"><span class="nav-icon">⇄</span>Routes</a>
+          <a class="nav-item" href="#logs"><span class="nav-icon">≡</span>Request logs</a>
+          <p class="nav-label nav-label-spaced">Workspace</p>
+          <a class="nav-item" href="#keys"><span class="nav-icon">⌁</span>API keys</a>
+          <a class="nav-item" href="#settings"><span class="nav-icon">⚙</span>Settings</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="system-status"><span class="status-dot"></span><span><strong>All systems operational</strong><small>Updated 12 sec ago</small></span></div>
+          <div class="user-profile"><span class="avatar">AM</span><span><strong>Alex Morgan</strong><small>Administrator</small></span><span class="more">•••</span></div>
+        </div>
+      </aside>
+
+      <main class="main-content" id="overview">
+        <header class="topbar">
+          <div class="breadcrumbs"><span>Production</span><span>/</span><strong>Overview</strong></div>
+          <div class="top-actions"><span class="live-indicator"><i></i>Live data</span><button class="icon-button" aria-label="Notifications">♧<b></b></button><button class="help-button">?</button></div>
+        </header>
+
+        <div class="page-content">
+          <section class="page-heading">
+            <div><p class="eyebrow">Friday, September 18, 2026 <span>·</span> 14:32 UTC</p><h1>Good afternoon, Alex <span>✦</span></h1><p class="heading-copy">Your gateway is keeping every model request moving.</p></div>
+            <button class="primary-button" id="send-request"><span>＋</span> Send test request</button>
+          </section>
+
+          <section class="metric-grid" aria-label="Gateway metrics">
+            <article class="metric-card"><div class="metric-top"><span>Requests today</span><span class="metric-icon blue">↗</span></div><strong id="request-total">284,691</strong><div class="metric-foot"><span class="trend up">↑ 18.4%</span><span>vs. yesterday</span></div><div class="sparkline blue-line"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+            <article class="metric-card"><div class="metric-top"><span>Success rate</span><span class="metric-icon green">✓</span></div><strong id="success-rate">99.82<span>%</span></strong><div class="metric-foot"><span class="trend up">↑ 0.12%</span><span>vs. yesterday</span></div><div class="sparkline green-line"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+            <article class="metric-card"><div class="metric-top"><span>Avg. latency</span><span class="metric-icon orange">◷</span></div><strong id="latency">842<span>ms</span></strong><div class="metric-foot"><span class="trend down">↓ 6.8%</span><span>vs. yesterday</span></div><div class="sparkline orange-line"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+            <article class="metric-card"><div class="metric-top"><span>Fallbacks triggered</span><span class="metric-icon coral">↪</span></div><strong id="fallback-total">1,247</strong><div class="metric-foot"><span class="trend neutral">0.44% of traffic</span><span>last 24 hours</span></div><div class="sparkline coral-line"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+          </section>
+
+          <section class="content-grid">
+            <article class="panel traffic-panel"><div class="panel-heading"><div><h2>Traffic overview</h2><p>Requests and provider capacity over time</p></div><div class="range-tabs"><button class="range active">24h</button><button class="range">7d</button><button class="range">30d</button></div></div><div class="chart-wrap"><div class="chart-y"><span>20k</span><span>15k</span><span>10k</span><span>5k</span><span>0</span></div><div class="chart"><div class="grid-lines"><i></i><i></i><i></i><i></i><i></i></div><svg viewBox="0 0 760 190" preserveAspectRatio="none" role="img" aria-label="Traffic chart"><defs><linearGradient id="area" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#6b75f5" stop-opacity=".23"/><stop offset="1" stop-color="#6b75f5" stop-opacity="0"/></linearGradient></defs><path class="area" d="M0 151 C28 145, 44 151, 69 136 S112 137, 136 121 S181 129, 205 104 S242 110, 274 117 S308 87, 337 93 S374 63, 405 77 S442 68, 468 82 S499 50, 534 59 S565 44, 589 54 S625 24, 652 42 S696 26, 728 31 S748 20, 760 19 L760 190 L0 190Z"/><path class="line" d="M0 151 C28 145, 44 151, 69 136 S112 137, 136 121 S181 129, 205 104 S242 110, 274 117 S308 87, 337 93 S374 63, 405 77 S442 68, 468 82 S499 50, 534 59 S565 44, 589 54 S625 24, 652 42 S696 26, 728 31 S748 20, 760 19"/><path class="line-secondary" d="M0 168 C42 164, 55 168, 87 157 S130 165, 157 148 S201 154, 228 139 S269 147, 298 131 S340 143, 368 125 S410 132, 441 118 S480 131, 510 106 S556 118, 584 102 S627 109, 655 87 S697 100, 728 81 S751 87, 760 74"/></svg><div class="chart-x"><span>00:00</span><span>04:00</span><span>08:00</span><span>12:00</span><span>16:00</span><span>20:00</span><span>Now</span></div></div></div><div class="chart-legend"><span><i class="legend-blue"></i>Requests</span><span><i class="legend-soft"></i>Rate limit headroom</span><span class="chart-up">↑ 12.6% from last period</span></div></article>
+
+            <article class="panel providers-panel" id="providers"><div class="panel-heading"><div><h2>Provider health</h2><p>Live status across your route pool</p></div><button class="text-button">Manage providers <span>→</span></button></div><div class="provider-list"><div class="provider-row"><span class="provider-logo openai">◎</span><div class="provider-name"><strong>OpenAI</strong><small>Primary route</small></div><span class="provider-status"><i></i>Operational</span><span class="provider-latency">621 ms</span></div><div class="provider-row"><span class="provider-logo anthropic">A</span><div class="provider-name"><strong>Anthropic</strong><small>Fallback 1</small></div><span class="provider-status"><i></i>Operational</span><span class="provider-latency">704 ms</span></div><div class="provider-row"><span class="provider-logo google">✦</span><div class="provider-name"><strong>Google Gemini</strong><small>Fallback 2</small></div><span class="provider-status warning"><i></i>Degraded</span><span class="provider-latency">1,248 ms</span></div></div><div class="provider-footer"><span><i class="status-dot"></i> 2,847 requests routed in the last hour</span><span class="capacity">Capacity <b>78%</b></span></div></article>
+          </section>
+
+          <section class="bottom-grid">
+            <article class="panel event-panel" id="logs"><div class="panel-heading"><div><h2>Recent events</h2><p>What your gateway handled in the last hour</p></div><button class="text-button">View request logs <span>→</span></button></div><div class="event-list" id="event-list"><div class="event-row"><span class="event-symbol success">✓</span><div><strong>Request completed</strong><small>gpt-4o · 842 tokens</small></div><time>12 sec ago</time><span class="event-route">OpenAI</span></div><div class="event-row"><span class="event-symbol fallback">↪</span><div><strong>Fallback route used</strong><small>claude-3-5-sonnet · timeout</small></div><time>1 min ago</time><span class="event-route">Anthropic</span></div><div class="event-row"><span class="event-symbol limit">◌</span><div><strong>Rate limit absorbed</strong><small>team: growth · 429 avoided</small></div><time>3 min ago</time><span class="event-route">Queue</span></div><div class="event-row"><span class="event-symbol success">✓</span><div><strong>Request completed</strong><small>gemini-2.5-pro · 1,042 tokens</small></div><time>4 min ago</time><span class="event-route">Google</span></div></div></article>
+            <article class="panel route-panel" id="routes"><div class="panel-heading"><div><h2>Active route</h2><p>Traffic policy currently in use</p></div><span class="route-live"><i></i>Active</span></div><div class="route-visual"><div class="route-node primary-node"><span class="provider-logo openai">◎</span><strong>OpenAI</strong><small>gpt-4o</small></div><div class="route-line"><span>99.82%</span></div><div class="route-node fallback-node"><span class="provider-logo anthropic">A</span><strong>Anthropic</strong><small>Fallback</small></div></div><div class="route-rule"><span class="rule-icon">↗</span><span><strong>Priority with automatic failover</strong><small>Timeout after 8s · 2 retries</small></span><button class="edit-button" aria-label="Edit active route">✎</button></div></article>
+          </section>
+
+          <footer class="page-footer"><span>Relay Gateway v2.4.1</span><span>API status <i class="status-dot"></i> Operational</span><span>Docs <b>↗</b></span></footer>
+        </div>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
